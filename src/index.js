@@ -29,7 +29,6 @@ app.use(cors({
 
 }))
 
-app.options('(.*)', cors());
 
 
 app.use((req, res, next) => {
