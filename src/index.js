@@ -29,7 +29,19 @@ app.use(cors({
 
 }))
 
-app.options('*', cors());
+app.options('(.*)', cors());
+
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://front-ecru-nine.vercel.app");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Credentials", "true");
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
+});
 
 app.use(express.json());
 app.use(cookieParser());
@@ -52,6 +64,16 @@ app.use('/api/v1/', route);
 
 
 
-app.listen(PORT, () => {
-  console.log("server is running successfully on: http://localhost:" , PORT);
-});
+// app.listen(PORT, () => {
+//   console.log("server is running successfully on: http://localhost:" , PORT);
+// });
+
+
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+      console.log("server is running successfully on: http://localhost:", PORT);
+    });
+}
+
+
+export default app;
