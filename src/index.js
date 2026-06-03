@@ -20,7 +20,10 @@ app.use(cors({
     // origin : 'http://localhost:5175',
     // credentials: true     
     
-     origin: true,
+    //  origin: true,
+
+    origin: "https://front-ecru-nine.vercel.app", 
+    methods: ["POST", "GET", "PUT", "DELETE"],
 
     credentials: true
 
