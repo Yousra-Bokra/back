@@ -22,8 +22,12 @@ app.use(cors({
     
     //  origin: true,
 
-    origin: "https://front-ecru-nine.vercel.app", 
-    methods: ["POST", "GET", "PUT", "DELETE"],
+    // origin: "https://front-ecru-nine.vercel.app", 
+    // methods: ["POST", "GET", "PUT", "DELETE"],
+
+    // credentials: true
+
+      origin: true,
 
     credentials: true
 
@@ -31,16 +35,16 @@ app.use(cors({
 
 
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://front-ecru-nine.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    }
-    next();
-});
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "https://front-ecru-nine.vercel.app");
+//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//     res.header("Access-Control-Allow-Credentials", "true");
+//     if (req.method === 'OPTIONS') {
+//         return res.sendStatus(200);
+//     }
+//     next();
+// });
 
 app.use(express.json());
 app.use(cookieParser());
